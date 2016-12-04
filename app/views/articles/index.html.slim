@@ -1,0 +1,15 @@
+h1 Listing articles
+
+- @articles.each do |article|
+  h3 = article.title
+  p = article.content
+  div
+    b Author: 
+    = article.user.email
+    br
+    small Created at: 
+    small =article.user.created_at.to_datetime
+    
+
+
+= link_to 'New Article', new_article_path, class: 'btn btn-default' 

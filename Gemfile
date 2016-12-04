@@ -46,7 +46,7 @@ group :development do
 end
 
 gem "slim-rails"
-
 gem 'bootstrap-sass'
-
 gem 'devise'
+gem 'paperclip'
+gem 'kaminari'

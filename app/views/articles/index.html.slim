@@ -9,7 +9,10 @@ h1 Listing articles
     br
     small Created at: 
     small =article.user.created_at.to_datetime
-    
+    b img:
+    =image_tag article.user.avatar(:thumb)
 
 
 = link_to 'New Article', new_article_path, class: 'btn btn-default' 
+
+=paginate @articles

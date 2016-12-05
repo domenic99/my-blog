@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all.page(params[:page]).per(20)
+    @article = Article.new
   end
 
   # GET /articles/1
@@ -13,9 +14,9 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/new
-  def new
-    @article = Article.new
-  end
+  #def new
+  #  @article = Article.new
+  #end
 
   # GET /articles/1/edit
   def edit
@@ -42,7 +43,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' } # вот тут у тебя редирект
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }

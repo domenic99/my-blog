@@ -13,6 +13,14 @@ h1 Listing articles
     =image_tag article.user.avatar(:thumb)
 
 
-= link_to 'New Article', new_article_path, class: 'btn btn-default' 
+
+//= link_to 'New Article', new_article_path, class: 'btn btn-default' 
 
 =paginate @articles
+
+div
+- if user_signed_in?
+  h1 New article
+  == render 'form'
+- else
+  h1 Pls log in to create an article

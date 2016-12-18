@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all.page(params[:page]).per(20)
     @article = Article.new
+    doc = Nokogiri::HTML(open('http://eslfuncast.libsyn.com/rss'))
+    @tmp = doc.css('enclosure')[0]['url'].to_s
   end
 
   # GET /articles/1
@@ -13,10 +15,15 @@ class ArticlesController < ApplicationController
   def show
   end
 
-  # GET /articles/new
-  #def new
-  #  @article = Article.new
-  #end
+  def audio
+    doc = Nokogiri::HTML(open('http://eslfuncast.libsyn.com/rss'))
+    link = doc.css('enclosure')[params[:id].to_i]
+    if link.nil?
+      render json: { success: '' }
+    else
+      render json: { success: link['url'].to_s }
+    end
+  end
 
   # GET /articles/1/edit
   def edit
@@ -43,7 +50,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' } # вот тут у тебя редирект
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }

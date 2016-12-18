@@ -14,3 +14,28 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+jQuery(function($){
+  var counter = 0;
+  $(".deleteAction").click(function(){
+    counter += 1;
+    $.ajax({
+      url: '/audio/' + counter,
+      type: 'POST',
+      data: {},
+      success: function(result) {
+        var foo = eval(result);
+        nextSong(foo.success);
+      }
+    });
+  });
+
+  function nextSong(link){
+    if(link){
+      var audio = $('audio');
+      audio[0].src = link;
+      audio[0].load();
+      audio[0].play();
+    }
+  };
+});

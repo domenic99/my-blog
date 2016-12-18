@@ -55,7 +55,19 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.2.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
+    capistrano-rails (1.2.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -115,6 +127,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.19.0)
+    puma (3.6.2)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -201,6 +214,10 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rvm
+  capistrano3-puma
   coffee-rails (~> 4.1.0)
   devise
   jbuilder (~> 2.0)
@@ -209,6 +226,7 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg (~> 0.15)
+  puma
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

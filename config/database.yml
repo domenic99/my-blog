@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: myblog_production
-  username: myblog
+  username: deploy
   password: 123456
